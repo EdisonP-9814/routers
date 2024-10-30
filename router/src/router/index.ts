@@ -16,7 +16,18 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../Components/AboutView.vue')
+    },
+    {
+      path: '/captura/:value',
+      name: 'captura',
+      component: () => import('../Components/CapturaView.vue'),
+      props: route => ({
+        value: isNaN(Number(route.params.value)) 
+          ? route.params.value 
+          : Number(route.params.value)
+      })
     }
+
   ]
 })
 
